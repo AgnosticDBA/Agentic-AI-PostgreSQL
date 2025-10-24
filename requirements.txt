@@ -1,0 +1,5 @@
+sqlalchemy
+psycopg2-binary
+pytest
+psycopg2
+psycopg2-binary
