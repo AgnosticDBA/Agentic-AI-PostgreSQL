@@ -28,3 +28,19 @@ docker compose up -d
 # Show the Postgres container (filter by name)
 docker ps -a --filter name=agentic_pg16
 ```
+
+CI / Automation
+---------------
+
+- This repository includes a GitHub Actions workflow that runs `pre-commit` hooks on pushes and pull requests. Once you push this repository to GitHub, the workflow will run automatically.
+
+Badge (placeholder)
+-------------------
+
+If you add a GitHub remote named `origin`, you can include a status badge showing the workflow status. Replace `<owner>` and `<repo>` in the badge URL below with your GitHub username/org and repository name after pushing:
+
+```
+[![pre-commit](https://github.com/<owner>/<repo>/actions/workflows/pre-commit.yml/badge.svg)](https://github.com/<owner>/<repo>/actions/workflows/pre-commit.yml)
+```
+
+After you push the repo and the workflow runs successfully, the badge will reflect the check status.
