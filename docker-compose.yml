@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    # Use COMPOSE_PROJECT_NAME (from .env) to build a predictable container name that
+    # can be overridden per environment. Falls back to 'agentic' when the variable is
+    # not set.
+    container_name: "${COMPOSE_PROJECT_NAME:-agentic}_pg16"
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: agentic
+      POSTGRES_PASSWORD: agentic_pass
+      POSTGRES_DB: agentic_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agentic -d agentic_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+volumes:
+  pgdata:
